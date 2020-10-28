@@ -1,0 +1,18 @@
+1. install firebase, react-firebase-hooks
+2. import
+    Firebase SDK:
+        - firebase
+        - firebase/auth
+        - firebase/firestore
+    Hooks:
+        - useAuthState
+        - useCollectionData
+3. Components
+    app
+        SignOut
+        user ? ChatRoom : SignIn
+
+    if SignIn User is Oject else SignOut User is null
+4. Create component SignIn
+    Include:
+        Button signin
