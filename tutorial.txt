@@ -16,3 +16,11 @@
 4. Create component SignIn
     Include:
         Button signin
+5. Database
+
+collection:
+    messages:       **array everyone's message**
+        timeInit    **initialization time**
+        content     **message content**
+        photoURL    **user photo's URL**
+        uid         **user's uid**

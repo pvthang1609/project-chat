@@ -1,25 +1,35 @@
-import './App.css';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useAuthState } from "react-firebase-hooks/auth";
 
-import firebase from './components/Firebase/configFirebase';
-import SignIn from './components/SignIn';
-import ChatRoom from './components/ChatRoom';
+import firebase from "./components/Firebase/configFirebase";
+import SignIn from "./components/SignIn";
+import ChatRoom from "./components/ChatRoom";
+import SignOut from "./components/SignOut";
+
+const auth = firebase.auth();
+const fireStore = firebase.firestore();
 
 const login = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider)
+  //provider include Google, Facebook, ..AuthProvider
+  auth.signInWithPopup(provider);
 };
 const logout = () => {
-  firebase.auth().signOut();
+  auth.signOut();
 };
 
 function App() {
-  const [user, loading, error] = useAuthState(firebase.auth())
+  const [user] = useAuthState(auth);
+  //include user, loading, error
+  //user include displayName, email, photoURL, emailVerified, uid
+
   return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-      { user ? <ChatRoom logout={logout}/> : <SignIn login={login} />}
+    <div>
+      {user ? (
+        <ChatRoom logout={logout} userName={user.displayName} />
+      ) : (
+        <SignIn login={login} />
+      )}
+      {auth.currentUser && <SignOut logout={logout} />}
     </div>
   );
 }
