@@ -5,26 +5,21 @@ import firebase from './components/Firebase/configFirebase';
 import SignIn from './components/SignIn';
 import ChatRoom from './components/ChatRoom';
 
+const login = () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider)
+};
+const logout = () => {
+  firebase.auth().signOut();
+};
+
 function App() {
-  const { initialising, user } = useAuthState(firebase.auth())
-  const login = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then( result => {
-      if (result.credential) {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = result.credential.accessToken;
-        // ...
-      }
-      // The signed-in user info.
-      var user = result.user;
-      console.log(`user: ${user}`)
-    })
-  };
+  const [user, loading, error] = useAuthState(firebase.auth())
   return (
     <div className="App">
       <header className="App-header">
       </header>
-      { user ? <ChatRoom /> : <SignIn login={login} />}
+      { user ? <ChatRoom logout={logout}/> : <SignIn login={login} />}
     </div>
   );
 }
