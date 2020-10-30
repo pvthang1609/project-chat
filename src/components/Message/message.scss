@@ -1,0 +1,23 @@
+.container-message {
+  margin: 10px 0;
+  display: flex;
+  justify-content: flex-end;
+  //   flex-direction: row-reverse; //not = me, use = other
+  align-items: flex-end;
+}
+.avatar-message {
+  width: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.timeInit {
+  font-size: 10px;
+  font-weight: 300;
+}
+.content-message {
+  max-width: 300px;
+  margin: 0 5px;
+  background-color: #ccc;
+  padding: 10px;
+  border-radius: 10px;
+}

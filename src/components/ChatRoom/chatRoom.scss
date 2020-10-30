@@ -1,0 +1,40 @@
+.chatRoom {
+  width: 700px;
+  height: 600px;
+}
+.header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  &__nameGroup {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2561b7;
+  }
+  &__infoUser {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &--nameUser::first-letter {
+      text-transform: uppercase;
+    }
+    &--avatarUser {
+      width: 35px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-left: 10px;
+    }
+  }
+}
+.content-chatRoom {
+  margin-top: 5px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  padding: 20px;
+}
