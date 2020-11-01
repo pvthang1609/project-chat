@@ -5,6 +5,9 @@
   //   flex-direction: row-reverse; //not = me, use = other
   align-items: flex-end;
 }
+.container-message-otherUser {
+  flex-direction: row-reverse;
+}
 .avatar-message {
   width: 20px;
   border-radius: 50%;
@@ -17,7 +20,10 @@
 .content-message {
   max-width: 300px;
   margin: 0 5px;
-  background-color: #ccc;
+  background-color: #e1ecfe;
   padding: 10px;
   border-radius: 10px;
+}
+.content-message-otherUser {
+  background-color: #e3e3e3;
 }

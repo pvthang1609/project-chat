@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FirebaseContext } from "../Context";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+
 import Loading from "../Loading";
 import Message from "../Message";
-import './chatRoom.scss'
 
-export default function ChatRoom({ user, values }) {
+import "./chatRoom.scss";
+
+export default function ChatRoom({ user }) {
+  const firebase = useContext(FirebaseContext);
+  const fireStore = firebase.firestore();
+  const messagesRef = fireStore.collection("messages");
+  const query = messagesRef.orderBy("timeInit").limit(25);
+  const [ value ] = useCollectionData(query, {    //include value, loading, error
+    idField: "id",
+  });
+  console.log(user);
   return (
     <div className="chatRoom">
       <div className="header">
@@ -16,14 +28,16 @@ export default function ChatRoom({ user, values }) {
         </div>
       </div>
       <div className="content-chatRoom">
-        {values ? (
-          values.map((message, index) => {
+        {value ? (
+          value.map((message, index) => {
             return (
               <Message
                 key={index}
                 content={message.content}
                 photoURL={message.photoURL}
                 timeInit={message.timeInit}
+                uidUser={user.uid}
+                uid={message.uid}
               />
             );
           })

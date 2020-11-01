@@ -1,7 +1,10 @@
 import React from "react";
+
 import "./message.scss";
 
-export default function Message({ content, photoURL, timeInit }) {
+let classNames = require("classnames");
+
+export default function Message({ content, photoURL, timeInit, uidUser, uid }) {
   const milliseconds = timeInit.toMillis();
   const millisecondsNow = Date.now();
   const agoSec = Math.round((millisecondsNow - milliseconds) / 1000);
@@ -10,7 +13,7 @@ export default function Message({ content, photoURL, timeInit }) {
   const agoDay = Math.round(agoHour / 24);
 
   const timeToNow = () => {
-    if (agoDay > 1) {
+    if (agoDay >= 1) {
       return `${agoDay} day`;
     } else if (agoHour >= 1) {
       return `${agoHour} hour`;
@@ -21,11 +24,21 @@ export default function Message({ content, photoURL, timeInit }) {
     }
   };
   return (
-    <div className="container-message">
+    <div
+      className={classNames("container-message", {
+        "container-message-otherUser": uidUser !== uid,
+      })}
+    >
       <div className="timeInit">
         {agoDay < 7 ? `about ${timeToNow()} ago` : ""}
       </div>
-      <div className="content-message">{content}</div>
+      <div
+        className={classNames("content-message", {
+          "content-message-otherUser": uidUser !== uid,
+        })}
+      >
+        {content}
+      </div>
       <div className="avatar-message">
         <img src={photoURL} alt="avatar" />
       </div>
