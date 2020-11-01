@@ -6,16 +6,17 @@ import Loading from "../Loading";
 import Message from "../Message";
 
 import "./chatRoom.scss";
+import MessageForm from "../MessageForm";
 
 export default function ChatRoom({ user }) {
   const firebase = useContext(FirebaseContext);
   const fireStore = firebase.firestore();
   const messagesRef = fireStore.collection("messages");
   const query = messagesRef.orderBy("timeInit").limit(25);
-  const [ value ] = useCollectionData(query, {    //include value, loading, error
+  const [value] = useCollectionData(query, {
+    //include value, loading, error
     idField: "id",
   });
-  console.log(user);
   return (
     <div className="chatRoom">
       <div className="header">
@@ -45,6 +46,7 @@ export default function ChatRoom({ user }) {
           <Loading />
         )}
       </div>
+      <MessageForm user={user} />
     </div>
   );
 }

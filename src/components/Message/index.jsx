@@ -21,6 +21,8 @@ export default function Message({ content, photoURL, timeInit, uidUser, uid }) {
       return `${agoMinute} minute`;
     } else if (agoSec >= 1) {
       return `${agoSec} seconds`;
+    } else {
+      return `0 seconds`;
     }
   };
   return (
