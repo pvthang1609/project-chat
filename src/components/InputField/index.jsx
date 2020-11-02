@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import './inputField.scss';
 
 export default function InputField(props) {
   const { field} = props;
   const { name, value, onChange, onBlur } = field;
+  const inputRef = React.createRef()
+
+  useEffect(() => {
+    inputRef.current.focus()
+    // eslint-disable-next-line
+  }, []);
+  
   return (
     <input
       type="text"
@@ -11,6 +19,8 @@ export default function InputField(props) {
       onChange={onChange}
       onBlur={onBlur}
       value={value}
+      className="input"
+      ref={inputRef}
     />
   );
 }
