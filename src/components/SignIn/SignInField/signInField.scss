@@ -1,0 +1,24 @@
+.signInField {
+    background-color: #f2f4f6;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    &__label {
+        color: #6489bd;
+        margin-bottom: 5px;
+        & p {
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+    }
+    &__input .fa {
+        width: 16px;
+        color: #ff6732;
+        margin-right: 20px;
+    }
+    &__input input {
+        border: none;
+        outline: none;
+        background-color: transparent;
+    }
+}
