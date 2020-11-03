@@ -7,16 +7,23 @@ import Message from "../Message";
 
 import "./chatRoom.scss";
 import MessageForm from "../MessageForm";
+import SignOut from "../SignOut";
 
 export default function ChatRoom({ user }) {
   const firebase = useContext(FirebaseContext);
   const fireStore = firebase.firestore();
+  const auth = firebase.auth();
   const messagesRef = fireStore.collection("messages");
   const query = messagesRef.orderBy("timeInit").limit(25);
   const [value] = useCollectionData(query, {
     //include value, loading, error
     idField: "id",
   });
+
+  const logout = () => {
+    auth.signOut();
+  };
+
   return (
     <div className="chatRoom">
       <div className="header">
@@ -26,6 +33,7 @@ export default function ChatRoom({ user }) {
           <div className="header__infoUser--avatarUser">
             <img src={user.photoURL} alt={user.displayName} />
           </div>
+          <SignOut logout={logout} />
         </div>
       </div>
       <div className="content-chatRoom">
