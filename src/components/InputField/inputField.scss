@@ -1,4 +1,4 @@
-.input {
+.inputMessage {
   padding: 10px;
   border: none;
   outline: none;
@@ -7,14 +7,13 @@
   background-color: transparent;
 }
 .submit-btn {
-  height: 100%;
-  width: 90px;
+  padding: 15px 34px;
   border: none;
   outline: none;
-  background-color: #2561b7;
+  background-color: #233b5d;
   cursor: pointer;
-  color: #fff;
 }
 .submit-btn .fa-paper-plane {
   font-size: 22px;
+  color: #fff;
 }

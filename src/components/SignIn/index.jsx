@@ -1,10 +1,12 @@
 import { FastField, Form, Formik } from "formik";
 import React, { useContext } from "react";
 import { FirebaseContext } from "../Context";
-import './signin.scss';
-import signInField from "./SignInField";
+import * as Yup from "yup";
 
-import Logo from '../../img/logo.svg';
+import "./signin.scss";
+
+import signInField from "./SignInField";
+import Logo from "../../img/logo.svg";
 
 export default function SignIn() {
   const firebase = useContext(FirebaseContext);
@@ -25,6 +27,26 @@ export default function SignIn() {
     login(provider);
   };
 
+  //initialValues Formik
+  const initValue = {
+    userName: "",
+    password: "",
+  };
+
+  const handleSubmit = (value) => {
+    console.log("isRun");
+    console.log(value);
+  };
+
+  //Yup validation
+
+  const signInSchema = Yup.object().shape({
+    userName: Yup.string()
+      .email("It's not email")
+      .required("Email is required..!"),
+    password: Yup.string().required("Password is required..!"),
+  });
+
   return (
     <div className="signIn">
       <div className="signIn__logo">
@@ -37,8 +59,12 @@ export default function SignIn() {
         <p>Wellcome</p>
         <p>Sign in to continue</p>
       </div>
-      <Formik>
-        {formikProps => {
+      <Formik
+        initialValues={initValue}
+        validationSchema={signInSchema}
+        onSubmit={handleSubmit}
+      >
+        {(formikProps) => {
           return (
             <Form>
               <FastField
@@ -57,19 +83,45 @@ export default function SignIn() {
                 icon={<i class="fa fa-unlock-alt" aria-hidden="true"></i>}
                 placeholder="********"
               />
-              <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
-                <button className="signIn__btn signIn__btn--withEmail" type="submit">Login</button>
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <button
+                  className="signIn__btn signIn__btn--withEmail"
+                  type="submit"
+                >
+                  Login
+                </button>
               </div>
             </Form>
-          )
+          );
         }}
       </Formik>
-      <p style={{textAlign: "center", fontWeight: 700, margin: "5px 0"}}>or</p>
+      <p style={{ textAlign: "center", fontWeight: 700, margin: "5px 0" }}>
+        or
+      </p>
       <div className="signIn__groupBtn">
-        <button className="signIn__btn signIn__btn--withGoogle" onClick={loginWithGoogle}><i class="fa fa-google" aria-hidden="true"></i>Sign In with Google</button>
-        <button className="signIn__btn signIn__btn--withFacebook" onClick={loginWithFacebook}><i class="fa fa-facebook-official" aria-hidden="true"></i>Sign In with Facebook</button>
+        <button
+          className="signIn__btn signIn__btn--withGoogle"
+          onClick={loginWithGoogle}
+        >
+          <i class="fa fa-google" aria-hidden="true"></i>Sign In with Google
+        </button>
+        <button
+          className="signIn__btn signIn__btn--withFacebook"
+          onClick={loginWithFacebook}
+        >
+          <i class="fa fa-facebook-official" aria-hidden="true"></i>Sign In with
+          Facebook
+        </button>
       </div>
-      <p style={{textAlign: "center", margin: "15px 0 0 0", fontSize: 12}}>Do not have an account, create now..!</p>
+      <p style={{ textAlign: "center", margin: "15px 0 0 0", fontSize: 12 }}>
+        Do not have an account, create now..!
+      </p>
     </div>
   );
 }
