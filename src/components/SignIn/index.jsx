@@ -2,6 +2,7 @@ import { FastField, Form, Formik } from "formik";
 import React, { useContext } from "react";
 import { FirebaseContext } from "../Context";
 import * as Yup from "yup";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 import "./signin.scss";
 
@@ -34,8 +35,12 @@ export default function SignIn() {
   };
 
   const handleSubmit = (value) => {
+ 
     console.log("isRun");
     console.log(value);
+    auth
+      .signInWithEmailAndPassword(value.userName, value.password)
+      .catch((error) => alert(error.message));
   };
 
   //Yup validation
@@ -46,7 +51,7 @@ export default function SignIn() {
       .required("Email is required..!"),
     password: Yup.string().required("Password is required..!"),
   });
-
+  
   return (
     <div className="signIn">
       <div className="signIn__logo">
@@ -56,8 +61,8 @@ export default function SignIn() {
         <p className="signIn__logo--text">ChatRoom</p>
       </div>
       <div className="signIn__heading">
-        <p>Wellcome</p>
-        <p>Sign in to continue</p>
+        <p>Wellcome..!</p>
+        <p>You need to login to continue</p>
       </div>
       <Formik
         initialValues={initValue}
