@@ -5,7 +5,7 @@ import InputField from "../InputField";
 import { FirebaseContext } from "../Context";
 import "firebase/firestore";
 
-import './messageForm.scss';
+import "./messageForm.scss";
 
 export default function MessageForm({ user }) {
   const firebase = useContext(FirebaseContext);
@@ -19,11 +19,11 @@ export default function MessageForm({ user }) {
     uid: user.uid,
   };
   const handleSubmit = (value) => {
-    if(value.content !== "") {
+    if (value.content !== "") {
       value.timeInit = new Date();
       messagesRef.add({ ...value }).catch((error) => console.error(error));
     }
-    value.content = '';
+    value.content = "";
   };
   return (
     <Formik initialValues={initValues} onSubmit={handleSubmit}>
@@ -31,7 +31,9 @@ export default function MessageForm({ user }) {
         return (
           <Form className="form-message">
             <FastField name="content" component={InputField} />
-            <button className="submit-btn" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+            <button className="submit-btn" type="submit">
+              <i className="fa fa-paper-plane" aria-hidden="true"></i>
+            </button>
           </Form>
         );
       }}

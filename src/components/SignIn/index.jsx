@@ -1,13 +1,13 @@
 import { FastField, Form, Formik } from "formik";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FirebaseContext } from "../Context";
 import * as Yup from "yup";
-import { useAuthState } from "react-firebase-hooks/auth";
 
 import "./signin.scss";
 
-import signInField from "./SignInField";
+import SignInField from "./SignInField";
 import Logo from "../../img/logo.svg";
+import { CSSTransition } from "react-transition-group";
 
 export default function SignIn() {
   const firebase = useContext(FirebaseContext);
@@ -35,9 +35,6 @@ export default function SignIn() {
   };
 
   const handleSubmit = (value) => {
- 
-    console.log("isRun");
-    console.log(value);
     auth
       .signInWithEmailAndPassword(value.userName, value.password)
       .catch((error) => alert(error.message));
@@ -51,7 +48,16 @@ export default function SignIn() {
       .required("Email is required..!"),
     password: Yup.string().required("Password is required..!"),
   });
-  
+
+  const [prop, setProp] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setProp(true);
+      console.log("isRun");
+    }, 1000);
+  }, []);
+
   return (
     <div className="signIn">
       <div className="signIn__logo">
@@ -61,7 +67,15 @@ export default function SignIn() {
         <p className="signIn__logo--text">ChatRoom</p>
       </div>
       <div className="signIn__heading">
-        <p>Wellcome..!</p>
+        <CSSTransition
+          in={prop}
+          timeout={1000}
+          mountOnEnter
+          unmountOnExit
+          classNames="heading"
+        >
+          <p>Wellcome..!</p>
+        </CSSTransition>
         <p>You need to login to continue</p>
       </div>
       <Formik
@@ -76,16 +90,16 @@ export default function SignIn() {
                 name="userName"
                 label="email"
                 type="text"
-                component={signInField}
-                icon={<i class="fa fa-envelope" aria-hidden="true"></i>}
+                component={SignInField}
+                icon={<i className="fa fa-envelope" aria-hidden="true"></i>}
                 placeholder="johndoe@gmail.com"
               />
               <FastField
                 name="password"
                 label="password"
                 type="password"
-                component={signInField}
-                icon={<i class="fa fa-unlock-alt" aria-hidden="true"></i>}
+                component={SignInField}
+                icon={<i className="fa fa-unlock-alt" aria-hidden="true"></i>}
                 placeholder="********"
               />
               <div
@@ -114,14 +128,14 @@ export default function SignIn() {
           className="signIn__btn signIn__btn--withGoogle"
           onClick={loginWithGoogle}
         >
-          <i class="fa fa-google" aria-hidden="true"></i>Sign In with Google
+          <i className="fa fa-google" aria-hidden="true"></i>Sign In with Google
         </button>
         <button
           className="signIn__btn signIn__btn--withFacebook"
           onClick={loginWithFacebook}
         >
-          <i class="fa fa-facebook-official" aria-hidden="true"></i>Sign In with
-          Facebook
+          <i className="fa fa-facebook-official" aria-hidden="true"></i>Sign In
+          with Facebook
         </button>
       </div>
       <p style={{ textAlign: "center", margin: "15px 0 0 0", fontSize: 12 }}>
