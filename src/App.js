@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="container">
       <FirebaseContext.Provider value={firebase}>
-        {user ? <ChatRoom user={user} /> : <SignIn/>}
+        {user ? <ChatRoom user={user} /> : <SignIn />}
       </FirebaseContext.Provider>
     </div>
   );

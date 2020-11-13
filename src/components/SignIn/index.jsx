@@ -2,10 +2,11 @@ import { FastField, Form, Formik } from "formik";
 import React, { useContext, useEffect, useState } from "react";
 import { FirebaseContext } from "../Context";
 import * as Yup from "yup";
+// import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
-import "./signin.scss";
+import "./signIn.scss";
 
-import SignInField from "./SignInField";
+import InputField from "../SignUp/InputField";
 import Logo from "../../img/logo.svg";
 import { CSSTransition } from "react-transition-group";
 
@@ -51,11 +52,19 @@ export default function SignIn() {
 
   const [prop, setProp] = useState(false);
 
+  const [isMessage, setIsMessage] = useState(0);
+
+  const showHeading = () => {
+    setProp(true);
+  };
+
   useEffect(() => {
-    setTimeout(() => {
-      setProp(true);
-      console.log("isRun");
-    }, 1000);
+    window.addEventListener("load", showHeading);
+    const interval = setInterval(() => {
+      setIsMessage((isMessage) => isMessage + 1);
+    }, 3000);
+    return () => clearInterval(interval);
+    // window.removeEventListener("load", showHeading);
   }, []);
 
   return (
@@ -69,14 +78,21 @@ export default function SignIn() {
       <div className="signIn__heading">
         <CSSTransition
           in={prop}
+          timeout={500}
+          mountOnEnter
+          classNames="heading"
+        >
+          <p>Wellcome ..!</p>
+        </CSSTransition>
+        <CSSTransition
+          in={isMessage % 2 === 1}
           timeout={1000}
           mountOnEnter
           unmountOnExit
-          classNames="heading"
+          classNames="message"
         >
-          <p>Wellcome..!</p>
+          <p>You need to login to continue</p>
         </CSSTransition>
-        <p>You need to login to continue</p>
       </div>
       <Formik
         initialValues={initValue}
@@ -90,7 +106,7 @@ export default function SignIn() {
                 name="userName"
                 label="email"
                 type="text"
-                component={SignInField}
+                component={InputField}
                 icon={<i className="fa fa-envelope" aria-hidden="true"></i>}
                 placeholder="johndoe@gmail.com"
               />
@@ -98,7 +114,7 @@ export default function SignIn() {
                 name="password"
                 label="password"
                 type="password"
-                component={SignInField}
+                component={InputField}
                 icon={<i className="fa fa-unlock-alt" aria-hidden="true"></i>}
                 placeholder="********"
               />

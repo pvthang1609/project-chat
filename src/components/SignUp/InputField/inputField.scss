@@ -1,4 +1,4 @@
-.signInField {
+.inputField {
   background-color: #f2f4f6;
   padding: 10px 20px;
   border-radius: 10px;
@@ -44,6 +44,6 @@
   opacity: 1;
   &-active {
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease
   }
 }

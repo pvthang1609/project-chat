@@ -1,17 +1,17 @@
 import React from "react";
 import { CSSTransition } from "react-transition-group";
 
-import "./signInField.scss";
+import "./inputField.scss";
 
-export default function SignInField(props) {
+export default function InputField(props) {
   const { label, type, icon, placeholder, field, form } = props;
   const { name } = field;
   const { errors, touched } = form;
   const prop = (errors[name] && touched[name]) ? true : false
 
   return (
-    <div className="signInField">
-      <div className="signInField__label">
+    <div className="inputField">
+      <div className="inputField__label">
         <p>{label}</p>
           <CSSTransition
             in={prop}
@@ -27,7 +27,7 @@ export default function SignInField(props) {
           </CSSTransition>
         {/* ) : null} */}
       </div>
-      <div className="signInField__input">
+      <div className="inputField__input">
         {icon}
         <input {...field} type={type} placeholder={placeholder} />
       </div>

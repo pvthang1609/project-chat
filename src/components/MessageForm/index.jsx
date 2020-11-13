@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FastField, Form, Formik } from "formik";
 
-import InputField from "../InputField";
+import InputField from "./InputField";
 import { FirebaseContext } from "../Context";
 import "firebase/firestore";
 
@@ -24,6 +24,7 @@ export default function MessageForm({ user }) {
       messagesRef.add({ ...value }).catch((error) => console.error(error));
     }
     value.content = "";
+    document.querySelector(".inputMessage").value = ""
   };
   return (
     <Formik initialValues={initValues} onSubmit={handleSubmit}>

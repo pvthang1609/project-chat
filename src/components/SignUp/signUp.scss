@@ -1,0 +1,39 @@
+.signUp {
+  width: 350px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  color: #233b5d;
+  &__heading {
+    height: 50px;
+    // margin-top: 50px;
+    margin-bottom: 50px;
+    & p:first-child {
+      font-size: 25px;
+      font-weight: 700;
+    }
+  }
+}
+.signUp-btn {
+  background-color: #233b5d;
+  display: block;
+  color: #fff;
+  height: 50px;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0 10px;
+  font-size: 20px;
+  margin-top: 20px;
+}
+.checkboxTerms {
+  font-size: 12px;
+  & input {
+    margin-right: 5px;
+  }
+}
+.fa-spinner {
+    color: #fff;
+}

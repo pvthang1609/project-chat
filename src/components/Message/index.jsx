@@ -1,5 +1,5 @@
 import React from "react";
-
+import defaultAvatar from "../../img/defaultAvatar.svg";
 import "./message.scss";
 
 let classNames = require("classnames");
@@ -42,7 +42,7 @@ export default function Message({ content, photoURL, timeInit, uidUser, uid }) {
         {content}
       </div>
       <div className="avatar-message">
-        <img src={photoURL} alt="avatar" />
+        <img src={photoURL ? photoURL : defaultAvatar} alt="avatar" />
       </div>
     </div>
   );

@@ -1,0 +1,10 @@
+.review-image {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 300px;
+    & img {
+        max-width: 100px;
+    }
+}

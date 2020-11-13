@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { FirebaseContext } from "../Context";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
 import Loading from "../Loading";
 import Message from "../Message";
+import defaultAvatar from "../../img/defaultAvatar.svg";
 
 import "./chatRoom.scss";
 import MessageForm from "../MessageForm";
@@ -24,14 +25,24 @@ export default function ChatRoom({ user }) {
     auth.signOut();
   };
 
+  useEffect(() => {
+    const contentChatRoom = document.querySelector(".content-chatRoom");
+    contentChatRoom.scrollTop = contentChatRoom.scrollHeight;
+  });
+
   return (
     <div className="chatRoom">
       <div className="header">
         <div className="header__nameGroup">ChatRoom</div>
         <div className="header__infoUser">
-          <div className="header__infoUser--nameUser">{user.displayName}</div>
+          <div className="header__infoUser--nameUser">
+            {user.displayName ? user.displayName : user.email}
+          </div>
           <div className="header__infoUser--avatarUser">
-            <img src={user.photoURL} alt={user.displayName} />
+            <img
+              src={user.photoURL ? user.photoURL : defaultAvatar}
+              alt={user.displayName ? user.displayName : user.email}
+            />
           </div>
           <SignOut logout={logout} />
         </div>
