@@ -12,17 +12,16 @@ export default function InputField(props) {
   }, []);
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Enter message in here..!!"
-        name={name}
-        onChange={onChange}
-        onBlur={onBlur}
-        value={value}
-        className="inputMessage"
-        ref={inputRef}
-      />
-    </div>
+    <input
+      style={{ width: "100%" }}
+      type="text"
+      placeholder="Enter message in here..!!"
+      name={name}
+      onChange={onChange}
+      onBlur={onBlur}
+      value={value}
+      className="inputMessage"
+      ref={inputRef}
+    />
   );
 }

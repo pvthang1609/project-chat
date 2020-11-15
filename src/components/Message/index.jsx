@@ -4,7 +4,14 @@ import "./message.scss";
 
 let classNames = require("classnames");
 
-export default function Message({ content, photoURL, timeInit, uidUser, uid }) {
+export default function Message({
+  content,
+  photoURL,
+  timeInit,
+  uidUser,
+  uid,
+  file,
+}) {
   const milliseconds = timeInit.toMillis();
   const millisecondsNow = Date.now();
   const agoSec = Math.round((millisecondsNow - milliseconds) / 1000);
@@ -39,7 +46,14 @@ export default function Message({ content, photoURL, timeInit, uidUser, uid }) {
           "content-message-otherUser": uidUser !== uid,
         })}
       >
-        {content}
+        {file && (
+          <div
+            style={{ borderRadius: 10, overflow: "hidden", marginBottom: 10 }}
+          >
+            <img src={file} alt="none" />
+          </div>
+        )}
+        <div>{content}</div>
       </div>
       <div className="avatar-message">
         <img src={photoURL ? photoURL : defaultAvatar} alt="avatar" />

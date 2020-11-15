@@ -58,6 +58,7 @@ export default function ChatRoom({ user }) {
                 timeInit={message.timeInit}
                 uidUser={user.uid}
                 uid={message.uid}
+                file={message.file}
               />
             );
           })

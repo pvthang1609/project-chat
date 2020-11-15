@@ -24,6 +24,8 @@
   background-color: #e1ecfe;
   padding: 10px;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
 }
 .content-message-otherUser {
   background-color: #e3e3e3;
