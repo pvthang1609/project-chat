@@ -24,3 +24,6 @@ collection:
         content     **message content**
         photoURL    **user photo's URL**
         uid         **user's uid**
+
+
+ago time => create react custom hooks

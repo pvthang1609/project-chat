@@ -1,0 +1,32 @@
+.block-reviewImg {
+  position: absolute;
+  width: 150px;
+  overflow: hidden;
+  border-radius: 10px;
+  bottom: 55px;
+  right: 5px;
+  box-shadow: #00000054 0px 0px 5px;
+  background: #e1ecfe;
+  overflow: hidden;
+  & img {
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+  }
+}
+
+.close-btn {
+  background-color: #233b5d;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: #00000054 0px 0px 5px;
+  cursor: pointer;
+  & .fa-times {
+    color: #fff;
+  }
+}
