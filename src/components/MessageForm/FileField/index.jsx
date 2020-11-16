@@ -14,9 +14,18 @@ export default function FileField(props) {
     form.setFieldValue("file", e.currentTarget.files[0]);
   };
 
+  const handleClickCloseBtn = () => {
+    form.resetForm();
+  };
+
   return (
-    <label>
-      {value && <ReviewImg url={window.URL.createObjectURL(value)} />}
+    <div>
+      {value && (
+        <ReviewImg
+          url={window.URL.createObjectURL(value)}
+          onClickCloseBtn={handleClickCloseBtn}
+        />
+      )}
       <input
         id="file"
         name={name}
@@ -38,8 +47,12 @@ export default function FileField(props) {
         onClick={handleClick}
         type="button"
       >
-        <i style={{color: "#fff", fontSize: 22}} className="fa fa-picture-o" aria-hidden="true"></i>
+        <i
+          style={{ color: "#fff", fontSize: 22 }}
+          className="fa fa-picture-o"
+          aria-hidden="true"
+        ></i>
       </button>
-    </label>
+    </div>
   );
 }

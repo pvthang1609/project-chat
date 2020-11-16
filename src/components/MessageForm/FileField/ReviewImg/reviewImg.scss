@@ -8,24 +8,29 @@
   box-shadow: #00000054 0px 0px 5px;
   background: #e1ecfe;
   overflow: hidden;
-  & img {
+  &:hover .img-reviewImg {
     filter: blur(2px);
     -webkit-filter: blur(2px);
+  }
+  &:hover .close-btn {
+    top: 50%;
   }
 }
 
 .close-btn {
   background-color: #233b5d;
   position: absolute;
-  top: 50%;
+  top: 112%;
   left: 50%;
   transform: translate(-50%, -50%);
   height: 30px;
   width: 30px;
   border-radius: 50%;
   border: none;
+  outline: none;
   box-shadow: #00000054 0px 0px 5px;
   cursor: pointer;
+  transition: top 0.3s;
   & .fa-times {
     color: #fff;
   }

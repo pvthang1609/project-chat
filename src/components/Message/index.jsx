@@ -17,12 +17,11 @@ export default function Message({
 }) {
   const time = useCalcTime(timeInit);
 
-  const downloadImage = (url) => {
+  const downloadFile = (url) => {
     const xhr = new XMLHttpRequest();
     xhr.responseType = "blob";
     xhr.onload = (event) => {
-      var blob = xhr.response;
-      console.log(blob);
+      let blob = xhr.response;
       saveAs(blob);
     };
     xhr.open("GET", url);
@@ -64,7 +63,7 @@ export default function Message({
                 cursor: "pointer",
               }}
               type="button"
-              onClick={() => downloadImage(file)}
+              onClick={() => downloadFile(file)}
             >
               <i
                 style={{ color: "#fff" }}
