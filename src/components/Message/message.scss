@@ -30,3 +30,12 @@
 .content-message-otherUser {
   background-color: #e3e3e3;
 }
+.timeInit-enter {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+.timeInit-enter-active {
+  opacity: 0;
+  transform: translateX(0);
+  transition: opacity 0.3s, transform 0.3s;
+}

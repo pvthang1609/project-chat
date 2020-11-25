@@ -25,17 +25,17 @@ const SignupSchema = Yup.object().shape({
   isAgreeTerms: Yup.boolean().oneOf([true], "You should agree to the terms"),
 });
 
-export default function SignUp() {
+export default function SignUp({ onClick }) {
   const firebase = useContext(FirebaseContext);
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   const signUp = (email, password) => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
-        setIsLoading(false)
-        alert(`You have created an account: ${email}`)
+        setIsLoading(false);
+        alert(`You have created an account: ${email}`);
       })
       .catch((error) => {
         // Handle Errors here.
@@ -57,8 +57,8 @@ export default function SignUp() {
       <Formik
         initialValues={initValue}
         onSubmit={(value) => {
-          signUp(value.email, value.password)
-          setIsLoading(true)
+          signUp(value.email, value.password);
+          setIsLoading(true);
         }}
         validationSchema={SignupSchema}
       >
@@ -96,13 +96,15 @@ export default function SignUp() {
               </label>
               <button className="signUp-btn" type="submit">
                 Submit
-                {isLoading && <i className="fa fa-spinner" aria-hidden="true"></i>}
+                {isLoading && (
+                  <i className="fa fa-spinner" aria-hidden="true"></i>
+                )}
               </button>
             </Form>
           );
         }}
       </Formik>
-      <p style={{ textAlign: "center", margin: "15px 0 0 0", fontSize: 12 }}>
+      <p className="changeSign-pharagraph" onClick={onClick}>
         Already have an account? Sign In
       </p>
     </div>

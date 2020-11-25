@@ -1,7 +1,7 @@
 .signUp {
   width: 350px;
-  background-color: #fff;
-  border-radius: 10px;
+  // background-color: #fff;
+  // border-radius: 10px;
   padding: 20px;
   color: #233b5d;
   &__heading {
@@ -35,5 +35,15 @@
   }
 }
 .fa-spinner {
-    color: #fff;
+  color: #fff;
+}
+.changeSign-pharagraph {
+  text-align: center;
+  margin: 15px 0 0 0;
+  font-size: 12px;
+  cursor: pointer;
+}
+.changeSign-pharagraph:hover {
+  color: #ff6732;
+  text-decoration: underline;
 }

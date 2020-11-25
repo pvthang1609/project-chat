@@ -90,9 +90,10 @@ export default function MessageForm({ user }) {
       );
     }
   };
+
   return (
     <Formik initialValues={initValues} onSubmit={handleSubmit}>
-      {(formikProps) => {
+      {(props) => {
         return (
           <Form className="form-message">
             <FastField name="content" component={InputField} />

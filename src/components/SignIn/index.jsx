@@ -2,7 +2,6 @@ import { FastField, Form, Formik } from "formik";
 import React, { useContext, useEffect, useState } from "react";
 import { FirebaseContext } from "../Context";
 import * as Yup from "yup";
-// import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 import "./signIn.scss";
 
@@ -10,7 +9,7 @@ import InputField from "../SignUp/InputField";
 import Logo from "../../img/logo.svg";
 import { CSSTransition } from "react-transition-group";
 
-export default function SignIn() {
+export default function SignIn({ onClick }) {
   const firebase = useContext(FirebaseContext);
   const auth = firebase.auth();
 
@@ -154,7 +153,7 @@ export default function SignIn() {
           with Facebook
         </button>
       </div>
-      <p style={{ textAlign: "center", margin: "15px 0 0 0", fontSize: 12 }}>
+      <p className="changeSign-pharagraph" onClick={onClick}>
         Do not have an account, create now..!
       </p>
     </div>

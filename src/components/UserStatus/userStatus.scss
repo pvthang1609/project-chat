@@ -1,0 +1,58 @@
+.userStatus {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px 10px;
+  background-color: #f7f7f7;
+  margin-right: 5px;
+  border-radius: 10px;
+  &__heading {
+    font-size: 18px;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  &__user {
+    width: 35px;
+    position: relative;
+    margin-bottom: 10px;
+    &-image {
+      max-width: 100%;
+      border-radius: 50%;
+    }
+    &-icon {
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s;
+      &-justOffline {
+        position: absolute;
+        border-radius: 10px;
+        background-color: #ccc;
+        border: 2px solid #f7f7f7;
+        bottom: 0;
+        right: 0;
+        visibility: visible;
+        opacity: 1;
+        font-size: 6px;
+        font-weight: 900;
+        padding: 0 2px;
+        color: #31a24c;
+        min-width: 32px;
+        text-align: center;
+      }
+      &-online {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #31a24c;
+        border: 2px solid #f7f7f7;
+        bottom: 0;
+        right: 0;
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+}
