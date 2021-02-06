@@ -10,6 +10,7 @@ import "./chatRoom.scss";
 import MessageForm from "../MessageForm";
 import SignOut from "../SignOut";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import UserStatus from "../UserStatus";
 
 export default function ChatRoom({ user }) {
   const firebase = useContext(FirebaseContext);
@@ -48,28 +49,31 @@ export default function ChatRoom({ user }) {
           <SignOut logout={logout} />
         </div>
       </div>
-      <div className="content-chatRoom">
-        {value ? (
-          <TransitionGroup>
-            {value.map((message, index) => {
-              return (
-                <CSSTransition timeout={300} classNames="message-block">
-                  <Message
-                    key={index}
-                    content={message.content}
-                    photoURL={message.photoURL}
-                    timeInit={message.timeInit}
-                    uidUser={user.uid}
-                    uid={message.uid}
-                    file={message.file}
-                  />
-                </CSSTransition>
-              );
-            })}
-          </TransitionGroup>
-        ) : (
-          <Loading />
-        )}
+      <div style={{ display: "flex" }}>
+        <UserStatus />
+        <div className="content-chatRoom">
+          {value ? (
+            <TransitionGroup>
+              {value.map((message, index) => {
+                return (
+                  <CSSTransition timeout={300} classNames="message-block">
+                    <Message
+                      key={index}
+                      content={message.content}
+                      photoURL={message.photoURL}
+                      timeInit={message.timeInit}
+                      uidUser={user.uid}
+                      uid={message.uid}
+                      file={message.file}
+                    />
+                  </CSSTransition>
+                );
+              })}
+            </TransitionGroup>
+          ) : (
+            <Loading />
+          )}
+        </div>
       </div>
       <MessageForm user={user} />
     </div>

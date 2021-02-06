@@ -1,5 +1,7 @@
 .chatRoom {
   width: 800px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 .header {
   width: 100%;
@@ -9,8 +11,7 @@
   align-items: center;
   padding: 10px 20px;
   background-color: #f7f7f7;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
+  border-bottom: 1px solid #ccc;
   &__nameGroup {
     font-size: 30px;
     font-weight: 700;
@@ -38,6 +39,7 @@
   background-color: #fff;
   padding: 20px;
   height: 450px;
+  width: 100%;
   overflow-y: scroll;
   &::-webkit-scrollbar {
     width: 5px;
@@ -55,4 +57,13 @@
 }
 .chatRoom:hover ::-webkit-scrollbar-thumb {
   background: #ff6732;
+}
+.message-block-enter {
+  opacity: 0;
+  transform: translateY(50px) scale(0.8);
+}
+.message-block-enter-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: all 0.3s;
 }

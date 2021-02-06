@@ -6,3 +6,12 @@
   background-color: #fff;
   border-radius: 10px;
 }
+.signIn-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+.signIn-exit-active {
+  opacity: 0;
+  transform: translateX(-110%);
+  transition: all 0.3s;
+}
