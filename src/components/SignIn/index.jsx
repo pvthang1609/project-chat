@@ -2,8 +2,7 @@ import { FastField, Form, Formik } from "formik";
 import React, { useContext, useEffect, useState } from "react";
 import { FirebaseContext } from "../Context";
 import * as Yup from "yup";
-
-import "./signIn.scss";
+import "./signin.scss";
 
 import InputField from "../SignUp/InputField";
 import Logo from "../../img/logo.svg";

@@ -11,7 +11,6 @@ import SignUp from "./components/SignUp";
 import ChatRoom from "./components/ChatRoom";
 
 import "./app.scss";
-import UserStatus from "./components/UserStatus";
 import { useState } from "react";
 
 firebase.initializeApp(firebaseConfig);
@@ -38,7 +37,6 @@ function App() {
               alignItems: "stretch",
             }}
           >
-            <UserStatus />
             <ChatRoom user={user} />
           </div>
         ) : display === "signIn" ? (
